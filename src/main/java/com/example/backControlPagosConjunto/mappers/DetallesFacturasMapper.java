@@ -1,10 +1,9 @@
 package com.example.backControlPagosConjunto.mappers;
 
-import com.example.backControlPagosConjunto.dtos.DetallesFacturasDTO;
+import com.example.backControlPagosConjunto.dtos.models.DetallesFacturasDTO;
 import com.example.backControlPagosConjunto.models.DetallesFacturas;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
 

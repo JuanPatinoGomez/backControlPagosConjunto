@@ -1,6 +1,6 @@
 package com.example.backControlPagosConjunto.controllers;
 
-import com.example.backControlPagosConjunto.dtos.DetallesFacturasDTO;
+import com.example.backControlPagosConjunto.dtos.models.DetallesFacturasDTO;
 import com.example.backControlPagosConjunto.models.DetallesFacturas;
 import com.example.backControlPagosConjunto.services.DetallesFacturasService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,9 +22,6 @@ public class DetallesFacturasController extends BaseController<DetallesFacturas,
     }
 
     //Metodos adicionales
-
-    //todo: Servicio por factura
-
     @GetMapping("/factura/{idFactura}")
     public List<DetallesFacturasDTO> getFactura(@PathVariable String idFactura){
         return this.service.findByIdFactura(idFactura);

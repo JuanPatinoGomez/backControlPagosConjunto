@@ -1,16 +1,15 @@
 package com.example.backControlPagosConjunto.models;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Data;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "facturas")
+@Data
 public class Facturas {
 
     @Column(name = "id", insertable = false, nullable = false, updatable = false)
@@ -33,59 +32,9 @@ public class Facturas {
     @Column(name = "estado", nullable = false)
     private Boolean estado;
 
-    public Integer getId() {
-        return id;
-    }
+    @ManyToOne
+    @JoinColumn(name = "id_residente", referencedColumnName = "id_residente", insertable = false, updatable = false)
+    private Residentes residente;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
-    public String getIdFactura() {
-        return idFactura;
-    }
-
-    public void setIdFactura(String idFactura) {
-        this.idFactura = idFactura;
-    }
-
-    public String getIdResidente() {
-        return idResidente;
-    }
-
-    public void setIdResidente(String idResidente) {
-        this.idResidente = idResidente;
-    }
-
-    public LocalDateTime getFechaEmision() {
-        return fechaEmision;
-    }
-
-    public void setFechaEmision(LocalDateTime fechaEmision) {
-        this.fechaEmision = fechaEmision;
-    }
-
-    public LocalDateTime getFechaVencimiento() {
-        return fechaVencimiento;
-    }
-
-    public void setFechaVencimiento(LocalDateTime fechaVencimiento) {
-        this.fechaVencimiento = fechaVencimiento;
-    }
-
-    public Long getTotal() {
-        return total;
-    }
-
-    public void setTotal(Long total) {
-        this.total = total;
-    }
-
-    public Boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
-    }
 }

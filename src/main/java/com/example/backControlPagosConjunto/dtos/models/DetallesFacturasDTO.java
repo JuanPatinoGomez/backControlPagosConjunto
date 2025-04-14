@@ -1,4 +1,4 @@
-package com.example.backControlPagosConjunto.dtos;
+package com.example.backControlPagosConjunto.dtos.models;
 
 import lombok.Data;
 

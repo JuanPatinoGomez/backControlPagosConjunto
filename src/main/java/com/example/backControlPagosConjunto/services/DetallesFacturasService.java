@@ -1,6 +1,6 @@
 package com.example.backControlPagosConjunto.services;
 
-import com.example.backControlPagosConjunto.dtos.DetallesFacturasDTO;
+import com.example.backControlPagosConjunto.dtos.models.DetallesFacturasDTO;
 import com.example.backControlPagosConjunto.models.DetallesFacturas;
 
 import java.util.List;
