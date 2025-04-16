@@ -1,39 +1,43 @@
 package com.example.backControlPagosConjunto.services.impl;
 
+import com.example.backControlPagosConjunto.mappers.GenericMapper;
 import com.example.backControlPagosConjunto.services.BaseService;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 
-public class BaseServiceImpl<T, ID> implements BaseService<T, ID> {
+public class BaseServiceImpl<ENTITY, DTO, ID> implements BaseService<DTO, ID> {
 
 
-    protected final JpaRepository<T, ID> repository;
+    protected final JpaRepository<ENTITY, ID> repository;
+    protected final GenericMapper<ENTITY, DTO> mapper;
 
-    public BaseServiceImpl(JpaRepository<T, ID> repository) {
+    public BaseServiceImpl(JpaRepository<ENTITY, ID> repository,  GenericMapper<ENTITY, DTO> mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override
-    public T save(T entity) {
-        return repository.save(entity);
+    public DTO save(DTO dto) {
+        ENTITY entity = this.mapper.toEntity(dto);
+        return this.mapper.toDTO(repository.save(entity));
     }
 
     @Override
-    public Optional<T> findById(ID id) {
-        return repository.findById(id);
+    public DTO findById(ID id) {
+        return this.mapper.toDTO(repository.findById(id).orElse(null));
     }
 
     @Override
-    public List<T> findAll() {
-        return repository.findAll();
+    public List<DTO> findAll() {
+        return this.mapper.toDTOList(repository.findAll());
     }
 
     @Override
-    public T update(ID id, T entity) {
-        return repository.save(entity);
+    public DTO update(ID id, DTO dto) {
+        ENTITY entity = this.mapper.toEntity(dto);
+        return this.mapper.toDTO(repository.save(entity));
     }
 
     @Override

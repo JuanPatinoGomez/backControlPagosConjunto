@@ -1,7 +1,6 @@
 package com.example.backControlPagosConjunto.controllers;
 
 import com.example.backControlPagosConjunto.dtos.models.DetallesFacturasDTO;
-import com.example.backControlPagosConjunto.models.DetallesFacturas;
 import com.example.backControlPagosConjunto.services.DetallesFacturasService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/detallesFacturas")
-public class DetallesFacturasController extends BaseController<DetallesFacturas, String>{
+public class DetallesFacturasController extends BaseController<DetallesFacturasDTO, String>{
 
     private final DetallesFacturasService service;
 

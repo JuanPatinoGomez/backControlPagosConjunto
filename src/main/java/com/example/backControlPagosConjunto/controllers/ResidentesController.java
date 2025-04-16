@@ -2,7 +2,6 @@ package com.example.backControlPagosConjunto.controllers;
 
 import com.example.backControlPagosConjunto.dtos.models.ResidentesDTO;
 import com.example.backControlPagosConjunto.dtos.general.GeneralSearchDTO;
-import com.example.backControlPagosConjunto.models.Residentes;
 import com.example.backControlPagosConjunto.services.ResidentesService;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/residentes")
-public class ResidentesController extends BaseController<Residentes, String>{
+public class ResidentesController extends BaseController<ResidentesDTO, String>{
 
     private final ResidentesService service;
 

@@ -4,34 +4,33 @@ import com.example.backControlPagosConjunto.services.BaseService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
-public class BaseController <T, ID>{
+public class BaseController <DTO,ID>{
 
-    protected final BaseService<T, ID> service;
+    protected final BaseService<DTO,ID> service;
 
-    public BaseController(BaseService<T, ID> service) {
+    public BaseController(BaseService<DTO, ID> service) {
         this.service = service;
     }
 
     @GetMapping
-    public List<T> getAll() {
+    public List<DTO> getAll() {
         return service.findAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<T> getById(@PathVariable ID id) {
+    public DTO getById(@PathVariable ID id) {
         return service.findById(id);
     }
 
     @PostMapping
-    public T create(@RequestBody T entity) {
-        return service.save(entity);
+    public DTO create(@RequestBody DTO dto) {
+        return service.save(dto);
     }
 
     @PutMapping("/{id}")
-    public T update(@PathVariable ID id, @RequestBody T entity) {
-        return service.save(entity);  // Si existe, lo actualiza
+    public DTO update(@PathVariable ID id, @RequestBody DTO dto) {
+        return service.save(dto);  // Si existe, lo actualiza
     }
 
     @DeleteMapping("/{id}")

@@ -1,15 +1,20 @@
 package com.example.backControlPagosConjunto.services.impl;
 
+import com.example.backControlPagosConjunto.dtos.models.ServiciosDTO;
+import com.example.backControlPagosConjunto.mappers.ServiciosMapper;
 import com.example.backControlPagosConjunto.models.Servicios;
 import com.example.backControlPagosConjunto.repositories.ServiciosRepository;
 import com.example.backControlPagosConjunto.services.ServiciosService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ServiciosServiceImpl extends BaseServiceImpl<Servicios, String> implements ServiciosService {
+public class ServiciosServiceImpl extends BaseServiceImpl<Servicios, ServiciosDTO, String> implements ServiciosService {
 
-    public ServiciosServiceImpl(ServiciosRepository repository) {
-        super(repository);
+    private final ServiciosMapper mapper;
+
+    public ServiciosServiceImpl(ServiciosRepository repository, ServiciosMapper mapper) {
+        super(repository, mapper);
+        this.mapper = mapper;
     }
 
 }

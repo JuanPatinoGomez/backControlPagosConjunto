@@ -1,13 +1,12 @@
 package com.example.backControlPagosConjunto.services;
 
 import java.util.List;
-import java.util.Optional;
 
-public interface BaseService<T, ID> {
+public interface BaseService<DTO, ID> {
 
-    T save(T entity);
-    Optional<T> findById(ID id);
-    List<T> findAll();
-    T update(ID id, T entity);
+    DTO save(DTO entity);
+    DTO findById(ID id);
+    List<DTO> findAll();
+    DTO update(ID id, DTO entity);
     void deleteById(ID id);
 }

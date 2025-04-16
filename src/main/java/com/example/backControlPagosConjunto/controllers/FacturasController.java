@@ -1,16 +1,15 @@
 package com.example.backControlPagosConjunto.controllers;
 
+import com.example.backControlPagosConjunto.dtos.models.FacturasDTO;
 import com.example.backControlPagosConjunto.dtos.operatives.FacturasFilterDTO;
 import com.example.backControlPagosConjunto.models.Facturas;
 import com.example.backControlPagosConjunto.services.FacturasService;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/facturas")
-public class FacturasController extends BaseController<Facturas, String>{
+public class FacturasController extends BaseController<FacturasDTO, String>{
 
     private final FacturasService service;
 

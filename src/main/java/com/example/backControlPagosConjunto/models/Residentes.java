@@ -28,4 +28,8 @@ public class Residentes {
     @Column(name = "id_tipo_vivienda", nullable = false)
     private String idTipoVivienda;
 
+    @ManyToOne
+    @JoinColumn(name = "id_tipo_documento", referencedColumnName = "id_tipo_documento", insertable = false, updatable = false)
+    private TiposDocumentos tipoDocumento;
+
 }

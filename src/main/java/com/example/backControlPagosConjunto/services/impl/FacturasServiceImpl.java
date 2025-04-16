@@ -1,6 +1,8 @@
 package com.example.backControlPagosConjunto.services.impl;
 
+import com.example.backControlPagosConjunto.dtos.models.FacturasDTO;
 import com.example.backControlPagosConjunto.dtos.operatives.FacturasFilterDTO;
+import com.example.backControlPagosConjunto.mappers.FacturasMapper;
 import com.example.backControlPagosConjunto.models.Facturas;
 import com.example.backControlPagosConjunto.repositories.FacturasRepository;
 import com.example.backControlPagosConjunto.services.FacturasService;
@@ -15,13 +17,15 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class FacturasServiceImpl extends BaseServiceImpl<Facturas, String> implements FacturasService {
+public class FacturasServiceImpl extends BaseServiceImpl<Facturas, FacturasDTO, String> implements FacturasService {
 
-    private FacturasRepository repository;
+    private final FacturasRepository repository;
+    private final FacturasMapper mapper;
 
-    public FacturasServiceImpl(FacturasRepository repository) {
-        super(repository);
+    public FacturasServiceImpl(FacturasRepository repository, FacturasMapper mapper) {
+        super(repository, mapper);
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override

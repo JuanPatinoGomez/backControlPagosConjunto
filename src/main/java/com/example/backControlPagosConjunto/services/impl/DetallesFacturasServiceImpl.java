@@ -10,13 +10,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class DetallesFacturasServiceImpl extends BaseServiceImpl<DetallesFacturas, String> implements DetallesFacturasService {
+public class DetallesFacturasServiceImpl extends BaseServiceImpl<DetallesFacturas, DetallesFacturasDTO, String> implements DetallesFacturasService {
 
     private final DetallesFacturasRepository repository;
     private final DetallesFacturasMapper mapper;
 
     public DetallesFacturasServiceImpl(DetallesFacturasRepository repository, DetallesFacturasMapper mapper) {
-        super(repository);
+        super(repository, mapper);
         this.repository = repository;
         this.mapper = mapper;
     }

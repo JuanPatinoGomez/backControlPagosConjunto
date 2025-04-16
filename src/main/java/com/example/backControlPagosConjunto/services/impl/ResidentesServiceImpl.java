@@ -15,13 +15,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ResidentesServiceImpl extends BaseServiceImpl<Residentes, String> implements ResidentesService {
+public class ResidentesServiceImpl extends BaseServiceImpl<Residentes, ResidentesDTO, String> implements ResidentesService {
 
     private final ResidentesRepository repository;
     private final ResidentesMapper mapper;
 
     public ResidentesServiceImpl(ResidentesRepository repository, ResidentesMapper mapper) {
-        super(repository);
+        super(repository, mapper);
         this.repository = repository;
         this.mapper = mapper;
     }
