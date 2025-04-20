@@ -12,14 +12,12 @@ import java.time.LocalDateTime;
 public class FacturasDTO {
 
     private Integer id;
-
     private String idFactura;
-
     private String idResidente;
-
     private LocalDateTime fechaEmision;
     private LocalDateTime fechaVencimiento;
     private Long total;
+    private String codigo;
     private Boolean estado;
     private String nombreResidente;
     private String numeroDocumentoResidente;

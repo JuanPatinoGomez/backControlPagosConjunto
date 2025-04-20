@@ -13,7 +13,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -29,7 +31,21 @@ public class FacturasServiceImpl extends BaseServiceImpl<Facturas, FacturasDTO, 
     }
 
     @Override
-    public Page<Facturas> findAllWithFilters(FacturasFilterDTO filterDTO) {
+    public FacturasDTO save(FacturasDTO dto){
+        Facturas factura = mapper.toEntity(dto);
+        factura.setCodigo(generarCodigoSeguro());
+        Facturas saved = repository.save(factura);
+        return mapper.toDTO(saved);
+    }
+
+    private String generarCodigoSeguro() {
+        String input = LocalDateTime.now().toString() + Math.random();
+        String hash = DigestUtils.md5DigestAsHex(input.getBytes()).substring(0, 10).toUpperCase();
+        return "FCT-" + hash;
+    }
+
+    @Override
+    public Page<FacturasDTO> findAllWithFilters(FacturasFilterDTO filterDTO) {
         Pageable pageable = PageRequest.of(filterDTO.getPagina(), filterDTO.getCantidad(), Sort.by(Sort.Direction.DESC, "fechaVencimiento"));
 
         Specification<Facturas> spec = Specification.where(null);
@@ -59,6 +75,9 @@ public class FacturasServiceImpl extends BaseServiceImpl<Facturas, FacturasDTO, 
 
         spec = spec.and(filtrosOr);
 
-        return repository.findAll(spec, pageable);
+        Page<Facturas> facturasPage = repository.findAll(spec, pageable);
+
+        return facturasPage.map(mapper::toDTO);
+
     }
 }

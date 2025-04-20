@@ -6,6 +6,7 @@ import lombok.Data;
 public class FacturasFilterDTO {
 
     private String nombre;
+    private String codigoFactura;
     private String idResidente;
     private boolean indicadorAlDia;
     private boolean indicadorPendientes;

@@ -19,6 +19,13 @@ public class FacturasSpecifications {
         };
     }
 
+    public static Specification<Facturas> facturasPorCodigoFactura(String codigoFactura) {
+        return (root, query, cb) -> {
+            if(codigoFactura == null || codigoFactura.isBlank()) return null;
+            return cb.like(cb.lower(root.get("residente").get("nombreCompleto")),"%" + codigoFactura.toLowerCase() + "%");
+        };
+    }
+
     public static Specification<Facturas> facturasPorIdResidente(String idResidente) {
         return (root, query, cb) -> {
             if(idResidente == null || idResidente.isBlank()) return null;

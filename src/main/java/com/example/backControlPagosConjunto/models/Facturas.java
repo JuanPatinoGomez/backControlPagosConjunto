@@ -19,14 +19,14 @@ public class Facturas {
     @UuidGenerator
     @Column(name = "id_factura", nullable = false)
     private String idFactura;
-
     @Column(name = "id_residente" , nullable = false)
     private String idResidente;
-
     @Column(name = "fecha_emision" , nullable = false)
     private LocalDateTime fechaEmision;
     @Column(name = "fecha_vencimiento", nullable = false)
     private LocalDateTime fechaVencimiento;
+    @Column(name = "codigo", nullable = false)
+    private String codigo;
     @Column(name = "total", nullable = false)
     private Long total;
     @Column(name = "estado", nullable = false)

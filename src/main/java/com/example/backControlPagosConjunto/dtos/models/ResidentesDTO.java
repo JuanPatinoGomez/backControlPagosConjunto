@@ -17,4 +17,7 @@ public class ResidentesDTO {
     private String tipoDocumento;;
     private String codigoTipoDocumento;
 
+    private String tipoVivienda;
+    private String codigoTipoVivienda;
+
 }

@@ -32,4 +32,7 @@ public class Residentes {
     @JoinColumn(name = "id_tipo_documento", referencedColumnName = "id_tipo_documento", insertable = false, updatable = false)
     private TiposDocumentos tipoDocumento;
 
+    @ManyToOne
+    @JoinColumn(name = "id_tipo_vivienda", referencedColumnName = "id_tipo_vivienda", insertable = false, updatable = false)
+    private TiposViviendas tipoVivienda;
 }

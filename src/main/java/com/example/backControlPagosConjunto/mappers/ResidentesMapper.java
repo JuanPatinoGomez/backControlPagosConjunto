@@ -12,10 +12,13 @@ public interface ResidentesMapper  extends GenericMapper<Residentes, ResidentesD
     @Override
     @Mapping(target = "tipoDocumento", source = "tipoDocumento.nombre")
     @Mapping(target = "codigoTipoDocumento", source = "tipoDocumento.codigo")
+    @Mapping(target = "tipoVivienda", source = "tipoVivienda.nombre")
+    @Mapping(target = "codigoTipoVivienda", source = "tipoVivienda.codigo")
     ResidentesDTO toDTO(Residentes residentes);
 
     @Override
     @Mapping(target = "tipoDocumento", ignore = true)
+    @Mapping(target = "tipoVivienda", ignore = true)
     Residentes toEntity(ResidentesDTO residentesDTO);
 
     @Override

@@ -7,5 +7,5 @@ import org.springframework.data.domain.Page;
 
 public interface FacturasService extends BaseService<FacturasDTO, String>{
     // Aquí puedes agregar métodos específicos para el modelo
-    Page<Facturas> findAllWithFilters(FacturasFilterDTO filterDTO);
+    Page<FacturasDTO> findAllWithFilters(FacturasFilterDTO filterDTO);
 }
