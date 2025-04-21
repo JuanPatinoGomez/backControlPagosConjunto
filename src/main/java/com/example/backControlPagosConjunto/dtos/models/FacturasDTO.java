@@ -22,5 +22,7 @@ public class FacturasDTO {
     private String nombreResidente;
     private String numeroDocumentoResidente;
 
+    //Campo calculado
+    private String numEstado;
 
 }

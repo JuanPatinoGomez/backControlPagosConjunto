@@ -22,7 +22,7 @@ public class FacturasSpecifications {
     public static Specification<Facturas> facturasPorCodigoFactura(String codigoFactura) {
         return (root, query, cb) -> {
             if(codigoFactura == null || codigoFactura.isBlank()) return null;
-            return cb.like(cb.lower(root.get("residente").get("nombreCompleto")),"%" + codigoFactura.toLowerCase() + "%");
+            return cb.like(cb.lower(root.get("codigo")),"%" + codigoFactura.toLowerCase() + "%");
         };
     }
 

@@ -1,7 +1,10 @@
 package com.example.backControlPagosConjunto.dtos.models;
 
 
+import com.example.backControlPagosConjunto.models.Facturas;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class ResidentesDTO {
@@ -19,5 +22,8 @@ public class ResidentesDTO {
 
     private String tipoVivienda;
     private String codigoTipoVivienda;
+
+    //Campo calculado
+    private String numEstado;
 
 }

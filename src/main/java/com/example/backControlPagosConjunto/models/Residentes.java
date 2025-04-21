@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.util.List;
+
 @Entity
 @Table(name = "residentes")
 @Data
@@ -27,6 +29,9 @@ public class Residentes {
     private String numeroVivienda;
     @Column(name = "id_tipo_vivienda", nullable = false)
     private String idTipoVivienda;
+
+    @OneToMany(mappedBy = "residente")
+    private List<Facturas> facturasList;
 
     @ManyToOne
     @JoinColumn(name = "id_tipo_documento", referencedColumnName = "id_tipo_documento", insertable = false, updatable = false)

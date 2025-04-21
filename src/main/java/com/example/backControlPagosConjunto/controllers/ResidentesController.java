@@ -1,7 +1,10 @@
 package com.example.backControlPagosConjunto.controllers;
 
+import com.example.backControlPagosConjunto.dtos.models.FacturasDTO;
 import com.example.backControlPagosConjunto.dtos.models.ResidentesDTO;
 import com.example.backControlPagosConjunto.dtos.general.GeneralSearchDTO;
+import com.example.backControlPagosConjunto.dtos.operatives.FacturasFilterDTO;
+import com.example.backControlPagosConjunto.dtos.operatives.ResidentesFilterDTO;
 import com.example.backControlPagosConjunto.services.ResidentesService;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,5 +38,9 @@ public class ResidentesController extends BaseController<ResidentesDTO, String>{
         return service.findAllByNombreCompletoContainingIgnoreCase(search);
     }
 
+    @PostMapping("/search/all/filters")
+    public List<ResidentesDTO> findAllWithFilters(@RequestBody ResidentesFilterDTO filterDTO){
+        return service.findAllWithFilters(filterDTO);
+    }
 
 }
