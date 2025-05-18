@@ -31,4 +31,9 @@ public class FacturasController extends BaseController<FacturasDTO, String>{
     public List<FacturasMiniDTO> findAllbynombreResidenteORcodigo(@RequestBody GeneralFilterDTO filterDTO){
         return service.findAllbynombreResidenteORcodigo(filterDTO);
     }
+
+    @GetMapping("/pago/manual/factura/{idFactura}")
+    public Boolean pagoManualFactura(@PathVariable String idFactura){
+        return service.pagoManualFactura(idFactura);
+    }
 }

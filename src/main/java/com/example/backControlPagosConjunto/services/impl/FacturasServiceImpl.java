@@ -2,6 +2,7 @@ package com.example.backControlPagosConjunto.services.impl;
 
 import com.example.backControlPagosConjunto.dtos.general.GeneralFilterDTO;
 import com.example.backControlPagosConjunto.dtos.models.FacturasDTO;
+import com.example.backControlPagosConjunto.dtos.models.PagosDTO;
 import com.example.backControlPagosConjunto.dtos.models.custom.FacturasMiniDTO;
 import com.example.backControlPagosConjunto.dtos.operatives.FacturasFilterDTO;
 import com.example.backControlPagosConjunto.mappers.FacturasMapper;
@@ -9,10 +10,8 @@ import com.example.backControlPagosConjunto.mappers.FacturasMiniMapper;
 import com.example.backControlPagosConjunto.models.Facturas;
 import com.example.backControlPagosConjunto.repositories.FacturasRepository;
 import com.example.backControlPagosConjunto.services.FacturasService;
+import com.example.backControlPagosConjunto.services.PagosService;
 import com.example.backControlPagosConjunto.specifications.FacturasSpecifications;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -29,18 +28,20 @@ public class FacturasServiceImpl extends BaseServiceImpl<Facturas, FacturasDTO, 
     private final FacturasRepository repository;
     private final FacturasMapper mapper;
     private final FacturasMiniMapper miniMapper;
+    private final PagosService pagosService;
 
-    public FacturasServiceImpl(FacturasRepository repository, FacturasMapper mapper, FacturasMiniMapper miniMapper) {
+    public FacturasServiceImpl(FacturasRepository repository, FacturasMapper mapper, FacturasMiniMapper miniMapper, PagosService pagosService) {
         super(repository, mapper);
         this.repository = repository;
         this.mapper = mapper;
         this.miniMapper = miniMapper;
+        this.pagosService = pagosService;
     }
 
     @Override
     public FacturasDTO save(FacturasDTO dto){
         Facturas factura = mapper.toEntity(dto);
-        factura.setCodigo(generarCodigoSeguro());
+        if(factura.getCodigo() == null) factura.setCodigo(generarCodigoSeguro());
         Facturas saved = repository.save(factura);
         return mapper.toDTO(saved);
     }
@@ -111,5 +112,15 @@ public class FacturasServiceImpl extends BaseServiceImpl<Facturas, FacturasDTO, 
         List<FacturasMiniDTO> facturasMiniDTOList = miniMapper.toDTOList(facturasUnicas);
         facturasMiniDTOList.sort(Comparator.comparing(FacturasMiniDTO::getNombreResidente));
         return facturasMiniDTOList;
+    }
+
+    @Override
+    public Boolean pagoManualFactura(String idFactura) {
+        FacturasDTO factura = super.findById(idFactura);
+        if(factura == null) return false;
+        this.pagosService.revisarYgeneracionPagoManual(factura);
+        factura.setEstado(true);
+        super.save(factura);
+        return true;
     }
 }

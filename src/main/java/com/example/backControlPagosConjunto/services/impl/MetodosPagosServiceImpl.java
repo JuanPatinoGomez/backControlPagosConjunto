@@ -10,11 +10,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class MetodosPagosServiceImpl extends BaseServiceImpl<MetodosPagos, MetodosPagosDTO ,String> implements MetodosPagosService {
 
+    private final MetodosPagosRepository repository;
     private final MetodosPagosMapper mapper;
 
-    public MetodosPagosServiceImpl(MetodosPagosRepository repository, MetodosPagosMapper mapper) {
+    public MetodosPagosServiceImpl(MetodosPagosRepository repository, MetodosPagosRepository repository1, MetodosPagosMapper mapper) {
         super(repository, mapper);
+        this.repository = repository1;
         this.mapper = mapper;
     }
 
+    @Override
+    public MetodosPagosDTO findByCodigo(String codigo) {
+        return this.mapper.toDTO(this.repository.findByCodigo(codigo));
+    }
 }

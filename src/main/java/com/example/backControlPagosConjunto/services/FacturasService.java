@@ -11,4 +11,5 @@ public interface FacturasService extends BaseService<FacturasDTO, String>{
     // Aquí puedes agregar métodos específicos para el modelo
     List<FacturasDTO> findAllWithFilters(FacturasFilterDTO filterDTO);
     List<FacturasMiniDTO> findAllbynombreResidenteORcodigo(GeneralFilterDTO filterDTO);
+    Boolean pagoManualFactura(String idFactura);
 }

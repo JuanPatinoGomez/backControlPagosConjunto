@@ -31,8 +31,6 @@ public class ResidentesController extends BaseController<ResidentesDTO, String>{
         return service.findAllByNombreCompletoContainingIgnoreCaseOrderByNombreCompletoAsc(nombre);
     }
 
-    //todo: Servicio con paginador de residentes filtro?????
-
     @PostMapping("/nombreCompleto/paginated/orderByNameASC")
     public Page<ResidentesDTO> findByNombreCompletoOrderByNameASC(@RequestBody GeneralSearchDTO search) {
         return service.findAllByNombreCompletoContainingIgnoreCase(search);
