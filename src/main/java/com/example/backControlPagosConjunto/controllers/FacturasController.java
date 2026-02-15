@@ -8,10 +8,11 @@ import com.example.backControlPagosConjunto.services.FacturasService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/facturas")
-public class FacturasController extends BaseController<FacturasDTO, String>{
+public class FacturasController extends BaseController<FacturasDTO, UUID>{
 
     private final FacturasService service;
 
@@ -33,7 +34,7 @@ public class FacturasController extends BaseController<FacturasDTO, String>{
     }
 
     @GetMapping("/pago/manual/factura/{idFactura}")
-    public Boolean pagoManualFactura(@PathVariable String idFactura){
+    public Boolean pagoManualFactura(@PathVariable UUID idFactura){
         return service.pagoManualFactura(idFactura);
     }
 }

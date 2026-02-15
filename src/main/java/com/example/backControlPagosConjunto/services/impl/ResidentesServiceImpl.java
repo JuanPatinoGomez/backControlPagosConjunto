@@ -17,9 +17,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
-public class ResidentesServiceImpl extends BaseServiceImpl<Residentes, ResidentesDTO, String> implements ResidentesService {
+public class ResidentesServiceImpl extends BaseServiceImpl<Residentes, ResidentesDTO, UUID> implements ResidentesService {
 
     private final ResidentesRepository repository;
     private final ResidentesMapper mapper;

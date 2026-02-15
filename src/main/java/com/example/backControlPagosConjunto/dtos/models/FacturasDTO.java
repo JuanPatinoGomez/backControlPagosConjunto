@@ -7,13 +7,14 @@ import lombok.Data;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 public class FacturasDTO {
 
     private Integer id;
-    private String idFactura;
-    private String idResidente;
+    private UUID idFactura;
+    private UUID idResidente;
     private LocalDateTime fechaEmision;
     private LocalDateTime fechaVencimiento;
     private Long total;

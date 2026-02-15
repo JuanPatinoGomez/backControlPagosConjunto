@@ -6,6 +6,7 @@ import lombok.Data;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "residentes")
@@ -18,9 +19,9 @@ public class Residentes {
     @Id
     @UuidGenerator
     @Column(name = "id_residente")
-    private String idResidente;
+    private UUID idResidente;
     @Column(name = "id_tipo_documento", nullable = false)
-    private String idTipoDocumento;
+    private UUID idTipoDocumento;
     @Column(name = "numero_documento", nullable = false)
     private String numeroDocumento;
     @Column(name = "nombre_completo", nullable = false)
@@ -28,7 +29,7 @@ public class Residentes {
     @Column(name = "numero_vivienda", nullable = false)
     private String numeroVivienda;
     @Column(name = "id_tipo_vivienda", nullable = false)
-    private String idTipoVivienda;
+    private UUID idTipoVivienda;
 
     @OneToMany(mappedBy = "residente")
     private List<Facturas> facturasList;

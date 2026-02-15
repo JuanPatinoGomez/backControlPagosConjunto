@@ -2,6 +2,9 @@ package com.example.backControlPagosConjunto.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.UUID;
+
 import org.hibernate.annotations.UuidGenerator;
 
 @Entity
@@ -15,13 +18,13 @@ public class DetallesFacturas {
     @Id
     @UuidGenerator
     @Column(name = "id_detalle_factura", nullable = false)
-    private String idDetalleFactura;
+    private UUID idDetalleFactura;
 
     @Column(name = "id_factura", nullable = false)
-    private String idFactura;
+    private UUID idFactura;
 
     @Column(name = "id_servicio", nullable = false)
-    private String idServicio;
+    private UUID idServicio;
 
     @Column(name = "monto", nullable = false)
     private Long monto;

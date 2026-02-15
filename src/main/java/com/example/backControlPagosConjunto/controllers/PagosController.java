@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/pagos")
-public class PagosController extends BaseController<PagosDTO, String>{
+public class PagosController extends BaseController<PagosDTO, UUID>{
 
     private final PagosService service;
 
@@ -22,7 +23,7 @@ public class PagosController extends BaseController<PagosDTO, String>{
 
     //Metodos adicionales
     @GetMapping("/factura/{idFactura}")
-    public List<PagosDTO> findByIdFactura(@PathVariable String idFactura){
+    public List<PagosDTO> findByIdFactura(@PathVariable UUID idFactura){
         return service.findByIdFactura(idFactura);
     }
 }

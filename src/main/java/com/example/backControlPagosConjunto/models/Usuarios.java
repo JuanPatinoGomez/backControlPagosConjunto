@@ -6,6 +6,7 @@ import lombok.Data;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name = "usuarios")
@@ -18,7 +19,7 @@ public class Usuarios {
     @Id
     @UuidGenerator
     @Column(name = "id_usuario", nullable = false)
-    private String idUsuario;
+    private UUID idUsuario;
     @Column(name = "usuario", nullable = false)
     private String usuario;
     @Column(name = "contrasena", nullable = false)

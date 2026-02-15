@@ -7,6 +7,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.util.UUID;
+
 import org.hibernate.annotations.UuidGenerator;
 
 @Entity
@@ -18,5 +21,5 @@ public class TiposDocumentos extends BaseEntidad {
     @Id
     @UuidGenerator
     @Column(name = "id_tipo_documento", nullable = false)
-    private String idTipoDocumento;
+    private UUID idTipoDocumento;
 }

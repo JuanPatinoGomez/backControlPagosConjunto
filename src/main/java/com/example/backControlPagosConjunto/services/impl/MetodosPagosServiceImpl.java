@@ -5,10 +5,13 @@ import com.example.backControlPagosConjunto.mappers.MetodosPagosMapper;
 import com.example.backControlPagosConjunto.models.MetodosPagos;
 import com.example.backControlPagosConjunto.repositories.MetodosPagosRepository;
 import com.example.backControlPagosConjunto.services.MetodosPagosService;
+
+import java.util.UUID;
+
 import org.springframework.stereotype.Service;
 
 @Service
-public class MetodosPagosServiceImpl extends BaseServiceImpl<MetodosPagos, MetodosPagosDTO ,String> implements MetodosPagosService {
+public class MetodosPagosServiceImpl extends BaseServiceImpl<MetodosPagos, MetodosPagosDTO , UUID> implements MetodosPagosService {
 
     private final MetodosPagosRepository repository;
     private final MetodosPagosMapper mapper;

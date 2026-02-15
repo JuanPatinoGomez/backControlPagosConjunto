@@ -5,12 +5,15 @@ import com.example.backControlPagosConjunto.mappers.UsuariosMapper;
 import com.example.backControlPagosConjunto.models.Usuarios;
 import com.example.backControlPagosConjunto.repositories.UsuariosRepository;
 import com.example.backControlPagosConjunto.services.UsuariosService;
+
+import java.util.UUID;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UsuariosServiceImpl extends BaseServiceImpl<Usuarios, UsuariosDTO, String> implements UsuariosService {
+public class UsuariosServiceImpl extends BaseServiceImpl<Usuarios, UsuariosDTO, UUID> implements UsuariosService {
 
     private final UsuariosRepository repository;
     private final UsuariosMapper mapper;

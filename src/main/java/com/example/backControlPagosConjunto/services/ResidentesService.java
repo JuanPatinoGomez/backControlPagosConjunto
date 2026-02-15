@@ -6,8 +6,9 @@ import com.example.backControlPagosConjunto.dtos.operatives.ResidentesFilterDTO;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
+import java.util.UUID;
 
-public interface ResidentesService extends BaseService<ResidentesDTO, String>{
+public interface ResidentesService extends BaseService<ResidentesDTO, UUID>{
     // Aquí puedes agregar métodos específicos para el modelo
     List<ResidentesDTO> findAllByNombreCompletoContainingIgnoreCaseOrderByNombreCompletoAsc(String nombre);
 

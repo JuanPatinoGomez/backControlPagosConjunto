@@ -20,10 +20,11 @@ import org.springframework.util.DigestUtils;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
-public class FacturasServiceImpl extends BaseServiceImpl<Facturas, FacturasDTO, String> implements FacturasService {
+public class FacturasServiceImpl extends BaseServiceImpl<Facturas, FacturasDTO, UUID> implements FacturasService {
 
     private final FacturasRepository repository;
     private final FacturasMapper mapper;
@@ -115,7 +116,7 @@ public class FacturasServiceImpl extends BaseServiceImpl<Facturas, FacturasDTO, 
     }
 
     @Override
-    public Boolean pagoManualFactura(String idFactura) {
+    public Boolean pagoManualFactura(UUID idFactura) {
         FacturasDTO factura = super.findById(idFactura);
         if(factura == null) return false;
         this.pagosService.revisarYgeneracionPagoManual(factura);

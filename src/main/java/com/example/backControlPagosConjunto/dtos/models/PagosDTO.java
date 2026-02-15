@@ -9,14 +9,15 @@ import lombok.Data;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 public class PagosDTO {
     private Integer id;
-    private String idPago;
-    private String idFactura;
-    private String idResidente;
+    private UUID idPago;
+    private UUID idFactura;
+    private UUID idResidente;
     private LocalDateTime fechaPago;
     private Long monto;
-    private String idMetodoPago;
+    private UUID idMetodoPago;
 }

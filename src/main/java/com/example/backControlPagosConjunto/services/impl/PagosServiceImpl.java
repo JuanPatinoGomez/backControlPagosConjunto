@@ -12,10 +12,11 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
-public class PagosServiceImpl extends BaseServiceImpl<Pagos, PagosDTO, String> implements PagosService {
+public class PagosServiceImpl extends BaseServiceImpl<Pagos, PagosDTO, UUID> implements PagosService {
 
     private final PagosMapper mapper;
     private final PagosRepository repository;
@@ -29,7 +30,7 @@ public class PagosServiceImpl extends BaseServiceImpl<Pagos, PagosDTO, String> i
     }
 
     @Override
-    public List<PagosDTO> findByIdFactura(String idFactura) {
+    public List<PagosDTO> findByIdFactura(UUID idFactura) {
         return mapper.toDTOList(repository.findByIdFactura(idFactura));
     }
 

@@ -1,5 +1,7 @@
 package com.example.backControlPagosConjunto.dtos.models;
 
+import java.util.UUID;
+
 import lombok.Data;
 
 @Data
@@ -7,7 +9,7 @@ import lombok.Data;
 public class UsuariosDTO {
 
     private Integer id;
-    private String idUsuario;
+    private UUID idUsuario;
     private String usuario;
     private String contrasena;
 

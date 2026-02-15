@@ -7,6 +7,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.util.UUID;
+
 import org.hibernate.annotations.UuidGenerator;
 
 @Entity
@@ -18,7 +21,7 @@ public class Servicios extends BaseEntidad{
     @Id
     @UuidGenerator
     @Column(name = "id_servicio", nullable = false)
-    private String idServicio;
+    private UUID idServicio;
 
     @Column(name = "descripcion")
     private String descripcion;

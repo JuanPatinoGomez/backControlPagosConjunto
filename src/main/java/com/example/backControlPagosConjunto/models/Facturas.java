@@ -6,6 +6,7 @@ import lombok.Data;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name = "facturas")
@@ -18,9 +19,9 @@ public class Facturas {
     @Id
     @UuidGenerator
     @Column(name = "id_factura", nullable = false)
-    private String idFactura;
+    private UUID idFactura;
     @Column(name = "id_residente" , nullable = false)
-    private String idResidente;
+    private UUID idResidente;
     @Column(name = "fecha_emision" , nullable = false)
     private LocalDateTime fechaEmision;
     @Column(name = "fecha_vencimiento", nullable = false)

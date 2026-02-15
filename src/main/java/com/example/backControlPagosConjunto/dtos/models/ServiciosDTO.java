@@ -8,12 +8,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.util.UUID;
+
 import org.hibernate.annotations.UuidGenerator;
 
 @Data
 public class ServiciosDTO extends BaseModelDTO {
 
-    private String idServicio;
+    private UUID idServicio;
     private String descripcion;
     private Long costo;
 }

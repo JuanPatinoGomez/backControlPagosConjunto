@@ -8,9 +8,10 @@ import com.example.backControlPagosConjunto.services.DetallesFacturasService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
-public class DetallesFacturasServiceImpl extends BaseServiceImpl<DetallesFacturas, DetallesFacturasDTO, String> implements DetallesFacturasService {
+public class DetallesFacturasServiceImpl extends BaseServiceImpl<DetallesFacturas, DetallesFacturasDTO, UUID> implements DetallesFacturasService {
 
     private final DetallesFacturasRepository repository;
     private final DetallesFacturasMapper mapper;
@@ -22,7 +23,7 @@ public class DetallesFacturasServiceImpl extends BaseServiceImpl<DetallesFactura
     }
 
     @Override
-    public List<DetallesFacturasDTO> findByIdFactura(String idFactura) {
+    public List<DetallesFacturasDTO> findByIdFactura(UUID idFactura) {
         List<DetallesFacturas> detallesFacturas = repository.findByIdFactura(idFactura);
         return this.mapper.toDTOList(detallesFacturas);
     }

@@ -4,8 +4,9 @@ import com.example.backControlPagosConjunto.models.Pagos;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.UUID;
 
-public interface PagosRepository extends JpaRepository<Pagos, String> {
+public interface PagosRepository extends JpaRepository<Pagos, UUID> {
 
-    List<Pagos> findByIdFactura(String idFactura);
+    List<Pagos> findByIdFactura(UUID idFactura);
 }

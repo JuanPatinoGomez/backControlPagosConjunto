@@ -7,8 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import java.util.List;
+import java.util.UUID;
 
-public interface ResidentesRepository extends JpaRepository<Residentes, String> , JpaSpecificationExecutor<Residentes> {
+public interface ResidentesRepository extends JpaRepository<Residentes, UUID> , JpaSpecificationExecutor<Residentes> {
 
     List<Residentes> findAllByNombreCompletoContainingIgnoreCaseOrderByNombreCompletoAsc(String nombre);
     Page<Residentes> findAllByNombreCompletoContainingIgnoreCase(String nombre, Pageable pageable);
