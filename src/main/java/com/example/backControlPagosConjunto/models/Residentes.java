@@ -2,7 +2,11 @@ package com.example.backControlPagosConjunto.models;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.List;
@@ -10,14 +14,17 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "residentes")
+@Builder
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Residentes {
 
-    @Column(name = "Id", insertable = false, nullable = false, updatable = false)
+    @Column(name = "id", insertable = false, nullable = false, updatable = false)
     private Integer id;
 
     @Id
-    @UuidGenerator
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id_residente")
     private UUID idResidente;
     @Column(name = "id_tipo_documento", nullable = false)

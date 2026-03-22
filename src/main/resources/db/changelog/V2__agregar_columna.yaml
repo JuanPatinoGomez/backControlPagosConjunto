@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: juan
+      changes:
+        - addColumn:
+            tableName: usuarios
+            schemaName: conjunto_residencial_control_pagos
+            columns:
+              - column:
+                  name: activo
+                  type: boolean

@@ -2,7 +2,11 @@ package com.example.backControlPagosConjunto.models;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import org.hibernate.annotations.UuidGenerator;
 
 import java.time.LocalDateTime;
@@ -11,6 +15,9 @@ import java.util.UUID;
 @Entity
 @Table(name = "facturas")
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Facturas {
 
     @Column(name = "id", insertable = false, nullable = false, updatable = false)

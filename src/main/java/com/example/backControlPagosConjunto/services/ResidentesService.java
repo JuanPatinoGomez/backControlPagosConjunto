@@ -2,6 +2,7 @@ package com.example.backControlPagosConjunto.services;
 
 import com.example.backControlPagosConjunto.dtos.models.ResidentesDTO;
 import com.example.backControlPagosConjunto.dtos.general.GeneralSearchDTO;
+import com.example.backControlPagosConjunto.dtos.operatives.ResidenteResponse;
 import com.example.backControlPagosConjunto.dtos.operatives.ResidentesFilterDTO;
 import org.springframework.data.domain.Page;
 
@@ -15,4 +16,8 @@ public interface ResidentesService extends BaseService<ResidentesDTO, UUID>{
     Page<ResidentesDTO> findAllByNombreCompletoContainingIgnoreCase(GeneralSearchDTO search);
 
     List<ResidentesDTO> findAllWithFilters(ResidentesFilterDTO filterDTO);
+
+    ResidenteResponse getAllResidentes(int pageNo, int pageSize);
+
+    ResidentesDTO getById(UUID id);
 }

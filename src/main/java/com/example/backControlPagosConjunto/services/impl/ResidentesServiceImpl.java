@@ -2,6 +2,7 @@ package com.example.backControlPagosConjunto.services.impl;
 
 import com.example.backControlPagosConjunto.dtos.models.ResidentesDTO;
 import com.example.backControlPagosConjunto.dtos.general.GeneralSearchDTO;
+import com.example.backControlPagosConjunto.dtos.operatives.ResidenteResponse;
 import com.example.backControlPagosConjunto.dtos.operatives.ResidentesFilterDTO;
 import com.example.backControlPagosConjunto.mappers.ResidentesMapper;
 import com.example.backControlPagosConjunto.models.Residentes;
@@ -79,6 +80,27 @@ public class ResidentesServiceImpl extends BaseServiceImpl<Residentes, Residente
 
 
         return residentesList.stream().map(r -> mapper.toDTO(r, filtroIndicador)).toList();
+    }
+
+    @Override
+    public ResidenteResponse getAllResidentes(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        Page<Residentes> residentesPage = repository.findAll(pageable);
+        List<ResidentesDTO> listResidentesDTO = mapper.toDTOList(residentesPage.getContent());
+
+        ResidenteResponse residenteResponse = new ResidenteResponse();
+        residenteResponse.setContent(listResidentesDTO);
+        residenteResponse.setPageNo(residentesPage.getNumber());
+        residenteResponse.setPageSize(residentesPage.getSize());
+        residenteResponse.setTotalPages(residentesPage.getTotalPages());
+        residenteResponse.setTotalElements(residentesPage.getTotalElements());
+        return residenteResponse;
+    }
+
+    @Override
+    public ResidentesDTO getById(UUID id) {
+        Residentes residente = repository.findById(id).orElse(null);
+        return mapper.toDTO(residente);
     }
 
 }
